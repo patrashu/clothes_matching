@@ -1,13 +1,15 @@
 import os
+import cv2
+import qimage2ndarray
 from selenium import webdriver
 from urllib.request import urlretrieve
 from selenium.webdriver.common.by import By
 
 from PySide6.QtCore import Slot, QSize
-from PySide6.QtGui import QFont, Qt, QPixmap
+from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (
     QFrame, QHBoxLayout, QLabel, QPushButton, QTextEdit,
-    QVBoxLayout, QGridLayout, QProgressBar, QFileDialog
+    QGridLayout, QProgressBar, QFileDialog
 )
 from .common import Label, PushButton
 
@@ -89,10 +91,20 @@ class Content(QFrame):
         image_url = image.get_attribute('src')
         driver.quit()
         # save
-        print(image_url)
         urlretrieve(image_url, "tmp.jpg")
         # load
         pixmap = QPixmap("tmp.jpg")
+        # q_image = pixmap.toImage()
+        # np_image = qimage2ndarray.recarray_view(q_image)
+        # print(np_image)
+
+        # mask = np_image
+        # # mask = cv2.cvtColor(np_image, cv2.COLOR_BAYER_BG2GRAY)
+        # mask[mask[:, :]==255] = 0
+        # mask[mask[:, :]>0] = 255
+        # bg_removed = cv2.bitwise_and(np_image, np_image, mask=mask)
+        # q_image = qimage2ndarray.array2qimage(bg_removed)
+        # pixmap = QPixmap.fromImage(q_image)
         self.frame_image2.setPixmap(pixmap.scaled(QSize(450, 450)))
         os.remove("tmp.jpg")
         

@@ -1,7 +1,6 @@
-from PySide6.QtGui import QFont, Qt
+from PySide6.QtGui import Qt
 from PySide6.QtWidgets import (
-    QFrame, QHBoxLayout, QLabel, QPushButton, QDialog,
-    QVBoxLayout
+    QFrame, QHBoxLayout, QLabel, QVBoxLayout
 )
 
 class QHLine(QFrame):

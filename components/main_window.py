@@ -1,9 +1,5 @@
-import os
-
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import (
-    QHBoxLayout, QMainWindow, QVBoxLayout, QWidget
+    QMainWindow, QVBoxLayout, QWidget
 )
 
 from .titlebar import Titlebar

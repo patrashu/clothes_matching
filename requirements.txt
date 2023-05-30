@@ -1,0 +1,4 @@
+Pyside6
+qimage2ndarray
+opencv-python
+selenium
