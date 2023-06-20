@@ -1,0 +1,10 @@
+*.jpg
+*.png
+*.json
+*.xml
+*.pth
+*.caffemodel
+results/
+__pycache__
+*.pyc
+*.exe
