@@ -6,5 +6,9 @@
 *.caffemodel
 results/
 __pycache__
+<<<<<<< HEAD
 *.pyc
 *.exe
+=======
+*.pyc
+>>>>>>> 0525b3ee3c03f5e120ea3c7c09c5abc01b24eaa6

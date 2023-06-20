@@ -1,5 +1,8 @@
 import os
+<<<<<<< HEAD
 import requests
+=======
+>>>>>>> 0525b3ee3c03f5e120ea3c7c09c5abc01b24eaa6
 from selenium import webdriver
 from urllib.request import urlretrieve
 from selenium.webdriver.common.by import By
@@ -19,8 +22,11 @@ class Content(QFrame):
         super().__init__()
         
         self.main_layout = QGridLayout()
+<<<<<<< HEAD
         self.model_file = ""
         self.cloth_file = ""
+=======
+>>>>>>> 0525b3ee3c03f5e120ea3c7c09c5abc01b24eaa6
         # left layout
         self.label_title1 = QLabel("피팅할 모델")
         self.label_title1.setStyleSheet(" font-size: 30px; text-align: center; ")
@@ -75,6 +81,7 @@ class Content(QFrame):
         self.btn_url_search.clicked.connect(self.web_crawl)
 
     def search_model(self) -> None:
+<<<<<<< HEAD
         file = QFileDialog.getOpenFileName(self, "Choose File", "", "All FIles(*) ;; Images(*.jpeg)")
         if file[0]:
             self.model_file = file[0]
@@ -99,6 +106,17 @@ class Content(QFrame):
         if obj_name == "frame1":
             self.frame_image1.setPixmap(pixmap.scaled(QSize(450, 450)))
         else:
+=======
+        self.model_file = QFileDialog.getOpenFileName(self, "Choose File", "", "All FIles(*) ;; Images(*.jpeg)")
+        if self.model_file[0]:
+            pixmap = QPixmap(self.model_file[0])
+            self.frame_image1.setPixmap(pixmap.scaled(QSize(450, 450)))   
+    
+    def search_cloth(self) -> None:
+        self.cloth_file = QFileDialog.getOpenFileName(self, "Choose File", "", "All FIles(*) ;; Images(*.jpeg)")
+        if self.cloth_file[0]:
+            pixmap = QPixmap(self.cloth_file[0])
+>>>>>>> 0525b3ee3c03f5e120ea3c7c09c5abc01b24eaa6
             self.frame_image2.setPixmap(pixmap.scaled(QSize(450, 450)))
 
     def inference(self) -> None:
@@ -119,8 +137,24 @@ class Content(QFrame):
         urlretrieve(image_url, "tmp.jpg")
         # load
         pixmap = QPixmap("tmp.jpg")
+<<<<<<< HEAD
         self.frame_image2.setPixmap(pixmap.scaled(QSize(450, 450)))
         self.cloth_file = "tmp.jpg"
+=======
+        # q_image = pixmap.toImage()
+        # np_image = qimage2ndarray.recarray_view(q_image)
+        # print(np_image)
+
+        # mask = np_image
+        # # mask = cv2.cvtColor(np_image, cv2.COLOR_BAYER_BG2GRAY)
+        # mask[mask[:, :]==255] = 0
+        # mask[mask[:, :]>0] = 255
+        # bg_removed = cv2.bitwise_and(np_image, np_image, mask=mask)
+        # q_image = qimage2ndarray.array2qimage(bg_removed)
+        # pixmap = QPixmap.fromImage(q_image)
+        self.frame_image2.setPixmap(pixmap.scaled(QSize(450, 450)))
+        os.remove("tmp.jpg")
+>>>>>>> 0525b3ee3c03f5e120ea3c7c09c5abc01b24eaa6
         
     @Slot(int)
     def progressChange(self, value):
