@@ -1,8 +1,4 @@
 import os
-<<<<<<< HEAD
-import requests
-=======
->>>>>>> 0525b3ee3c03f5e120ea3c7c09c5abc01b24eaa6
 from selenium import webdriver
 from urllib.request import urlretrieve
 from selenium.webdriver.common.by import By
@@ -22,11 +18,6 @@ class Content(QFrame):
         super().__init__()
         
         self.main_layout = QGridLayout()
-<<<<<<< HEAD
-        self.model_file = ""
-        self.cloth_file = ""
-=======
->>>>>>> 0525b3ee3c03f5e120ea3c7c09c5abc01b24eaa6
         # left layout
         self.label_title1 = QLabel("피팅할 모델")
         self.label_title1.setStyleSheet(" font-size: 30px; text-align: center; ")
@@ -81,32 +72,6 @@ class Content(QFrame):
         self.btn_url_search.clicked.connect(self.web_crawl)
 
     def search_model(self) -> None:
-<<<<<<< HEAD
-        file = QFileDialog.getOpenFileName(self, "Choose File", "", "All FIles(*) ;; Images(*.jpeg)")
-        if file[0]:
-            self.model_file = file[0]
-            pixmap = QPixmap(file[0])
-            self.frame_image1.setPixmap(pixmap.scaled(QSize(450, 450)))  
-            self.segmentation("frame1", file[0]) 
-    
-    def search_cloth(self) -> None:
-        file = QFileDialog.getOpenFileName(self, "Choose File", "", "All FIles(*) ;; Images(*.jpeg)")
-        if file[0]:
-            self.cloth_file = file[0]
-            pixmap = QPixmap(file[0])
-            self.frame_image2.setPixmap(pixmap.scaled(QSize(450, 450)))
-            self.segmentation("frame2", file[0])
-
-    def segmentation(self, obj_name, file_name) -> None:
-        url = 'http://127.0.0.1:8000/segmentation/'
-        response = requests.post(url, data={"file_name": str(file_name)})
-        answer = response.json()
-        pixmap = QPixmap(answer["result"])
-
-        if obj_name == "frame1":
-            self.frame_image1.setPixmap(pixmap.scaled(QSize(450, 450)))
-        else:
-=======
         self.model_file = QFileDialog.getOpenFileName(self, "Choose File", "", "All FIles(*) ;; Images(*.jpeg)")
         if self.model_file[0]:
             pixmap = QPixmap(self.model_file[0])
@@ -116,12 +81,11 @@ class Content(QFrame):
         self.cloth_file = QFileDialog.getOpenFileName(self, "Choose File", "", "All FIles(*) ;; Images(*.jpeg)")
         if self.cloth_file[0]:
             pixmap = QPixmap(self.cloth_file[0])
->>>>>>> 0525b3ee3c03f5e120ea3c7c09c5abc01b24eaa6
             self.frame_image2.setPixmap(pixmap.scaled(QSize(450, 450)))
 
     def inference(self) -> None:
         infer(self.model_file[0], self.cloth_file[0])
-        pixmap = QPixmap('/media/taek/fff8ae0d-2a61-471f-89cb-9daeb6ee0291/Fashion/clothes_matching/results/test/try-on/model.png')
+        pixmap = QPixmap('./results/test/try-on/model.png')
         self.frame_image3.setPixmap(pixmap.scaled(QSize(450, 450)))
 
     def web_crawl(self) -> None:
@@ -137,10 +101,6 @@ class Content(QFrame):
         urlretrieve(image_url, "tmp.jpg")
         # load
         pixmap = QPixmap("tmp.jpg")
-<<<<<<< HEAD
-        self.frame_image2.setPixmap(pixmap.scaled(QSize(450, 450)))
-        self.cloth_file = "tmp.jpg"
-=======
         # q_image = pixmap.toImage()
         # np_image = qimage2ndarray.recarray_view(q_image)
         # print(np_image)
@@ -154,7 +114,6 @@ class Content(QFrame):
         # pixmap = QPixmap.fromImage(q_image)
         self.frame_image2.setPixmap(pixmap.scaled(QSize(450, 450)))
         os.remove("tmp.jpg")
->>>>>>> 0525b3ee3c03f5e120ea3c7c09c5abc01b24eaa6
         
     @Slot(int)
     def progressChange(self, value):
@@ -167,5 +126,5 @@ class Content(QFrame):
     
     def resolution_4x(self):
         resolution()
-        pixmap = QPixmap('/media/taek/fff8ae0d-2a61-471f-89cb-9daeb6ee0291/Fashion/clothes_matching/results/swinir_real_sr_x4_large/model_SwinIR.png')
+        pixmap = QPixmap('./results/swinir_real_sr_x4_large/model_SwinIR.png')
         self.frame_image3.setPixmap(pixmap.scaled(QSize(450, 450)))

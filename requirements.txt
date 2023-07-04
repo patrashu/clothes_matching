@@ -12,3 +12,4 @@ gradio
 tqdm
 ninja
 timm
+wandb

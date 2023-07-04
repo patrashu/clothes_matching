@@ -99,20 +99,15 @@ def extract_data(method: str) -> None:
                 if tmp.get(o) is not None:
                     _img = tmp.get(o)
                     _img = _img.astype(np.uint8)
-                    # print(_img.shape)
                     result.append(_img)
                 else:
                     result.append(np.zeros((h, w), dtype=np.uint8))
 
             result = np.array(result, dtype=np.uint8)
             result = result.transpose(1, 2, 0)
-            # print(result.shape)
-            # cv2.imwrite("test.jpg", result)
             root = '/'.join(json_path.split('/')[:-1])
             name = json_path.split('/')[-1][:-5]
-            # shutil.copy(os.path.join(root, f"{name}.json"), f'temp/{method}/{name}.json')
             shutil.copy(os.path.join(root, f"{name}.jpg"), f'dataset/valid/images/{name}.jpg')
-            # shutil.copy(os.path.join(root, f"{name}.jpg"), f'dataset/valid/labels/{name}.jpg')
 
             _img = Image.fromarray(result)
             _img.save(f"dataset/valid/labels/{name}.png")

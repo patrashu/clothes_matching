@@ -11,16 +11,6 @@ from torchvision.transforms import Compose, Normalize
 import matplotlib.pyplot as plt
 import torchvision.transforms.functional as F
 
-# class Resize(object):
-#     def __init__(self, size):
-#         self.size = size
-
-#     def __call__(self, data):
-#         labels, images = data['labels'], data['images']
-#         images = cv2.resize(images, self.size)
-#         data = {'labels': labels, 'images': images}
-#         return data
-
 
 class CustomToTensor(object):
     def __call__(self, data):
@@ -98,7 +88,6 @@ def show(imgs):
 
 if __name__ == '__main__':
     transform = Compose([
-        # Normalization(),
         CustomToTensor(),
     ])
 

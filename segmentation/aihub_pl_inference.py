@@ -37,9 +37,7 @@ if __name__ == '__main__':
     data_path = "dataset/valid/"
     decode_model = "DeepLabV3Plus"
     encode_model = "resnet101"
-    ckpt = "model/epoch=26_loss=0.869050_piou=0.575691_diou=0.559307.ckpt"
-    # img_paths = glob("dataset/valid/images/*.jpg")
-    # img_path = random.choice(img_paths)
+    ckpt = "model/model.ckpt"
     img_path = "model1.jpg"
     label_path =os.path.join('/'.join(img_path.split('/')[:-2]), "labels", f"{img_path.split('/')[-1][:-4]}.jpg")
 
